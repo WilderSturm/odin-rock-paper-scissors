@@ -37,7 +37,14 @@ function playRound(playerSelection,computerSelection) {
         return "Type 'Rock' or 'Scissors' or 'Paper'!";
     }
 }
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log (computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    const playerSelection = prompt("Rock or Paper or Scissors?");
+    const computerSelection = getComputerChoice();
+    console.log (`The Computer chooses ${computerSelection}!`);
+    console.log(playRound(playerSelection, computerSelection));
+}
+game();
+game();
+game();
+game();
+game();
