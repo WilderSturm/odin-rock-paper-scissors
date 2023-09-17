@@ -8,62 +8,108 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
+
 function playRound(playerSelection,computerSelection) {
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection === "Rock") {
-            return "It's a draw!";
+            return;
         } else if (computerSelection === "Paper") {
             computerScore++;
-            return "You lose! Paper beats Rock.";
+            console.log(computerScore);
+            computerScoreText.innerHTML = computerScore;
         } else {
             playerScore++;
+            playerScoreText.innerHTML = playerScore;
             return "You win! Rock beats Scissors.";
         }
     } else if (playerSelection.toLowerCase() === "paper") {
         if (computerSelection === "Paper") {
-            return "It's a draw!";
+            return;
         } else if (computerSelection === "Scissors") {
             computerScore++;
-            return "You lose! Scissors beats Paper.";
+            computerScoreText.innerHTML = computerScore;
         } else {
             playerScore++;
-            return "You win! Paper beats Rock.";
+            playerScoreText.innerHTML = playerScore;
         }
     } else if (playerSelection.toLowerCase() === "scissors"){
         if (computerSelection === "Scissors") {
-            return "It's a draw!";
+            return;
         } else if (computerSelection === "Rock") {
             computerScore++;
-            return "You lose! Rock beats Scissors.";
+            computerScoreText.innerHTML = computerScore;
         } else {
             playerScore++;
-            return "You win! Scissors beats Paper.";
+            playerScoreText.innerHTML = playerScore;
         }
-    } else {
-        return "Type 'Rock' or 'Scissors' or 'Paper'!";
-    }
+    } 
 }
-function game() {  
-    const playerSelection = prompt("Rock or Paper or Scissors?");
+
+function game(e) {
+    let playerSelection = (e.target.id);
+    if (playerSelection === "chooseRock") {
+        playerSelection = "rock";
+    } else if (playerSelection === "choosePaper") {
+        playerSelection = "paper";
+    } else {
+        playerSelection = "scissors";
+    }
     const computerSelection = getComputerChoice();
-    console.log(`The Computer chooses ${computerSelection}!`);
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(`YOU ${playerScore} : ${computerScore} COMPUTER`);
+    const computerSelectionText = document.createElement("div");
+    computerSelectionText.textContent = `The computer chooses ${computerSelection}!`;
+    playRound(playerSelection,computerSelection);
+    ui.innerHTML = "";
+    ui.append(computerSelectionText);
+    gameEnd(playerScore,computerScore);
+
 }
+
 function gameEnd(playerScore, computerScore) {
-    if (playerScore > computerScore) {
-        console.log("VICTORY!");
-    } else if (playerScore < computerScore) {
-        console.log("DEFEAT!");
+    if(computerScore === 5 || playerScore === 5) {
+        if (playerScore > computerScore) {
+            const winMessage = document.createElement("h1");
+            winMessage.innerText = ("VICTORY!");
+            restart.append(winMessage);
+        } else if (playerScore < computerScore) {
+            const defeatMessage = document.createElement("h1");
+            defeatMessage.innerText = ("DEFEAT!");
+            restart.append(defeatMessage);
+        }
+        restartGame();
+        btn.forEach((button) => {
+            button.disabled = true;
+        });
     } else {
-        console.log("DRAW!");
+        return;
     }
+}
+
+function restartGame() {
+    const restartButton = document.createElement("button");
+    restartButton.innerText = "Retry";
+    restart.append(restartButton);
+    restartButton.addEventListener("click", function(e) {
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreText.innerHTML = (playerScore);
+        computerScoreText.innerHTML = (computerScore);
+        restart.innerText = ("");
+        btn.forEach((button) => {
+            button.disabled = false;
+        ui.innerHTML = "";
+        });
+    });
 }
 let playerScore = 0;
+console.log(playerScore);
 let computerScore = 0;
-game();
-game();
-game();
-game();
-game();
-gameEnd(playerScore, computerScore);
+
+const btn = document.querySelectorAll(".startButton");
+    btn.forEach((button) => {
+        button.addEventListener("click", game);
+    });
+const ui = document.querySelector(".interface");
+const currentScoreText = document.querySelector("#currentScore");
+const playerScoreText = document.querySelector("#playerScore");
+const computerScoreText = document.querySelector("#computerScore");
+const restart = document.querySelector("#restartPage");
