@@ -2,10 +2,27 @@
 
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset = "UTF-8">
         <title>Rock Paper Scissors</title>
+        <script src = "code.js" defer></script>
     </head>
     <body>
-        <script src="code.js"></script>
+        <h1>The Rock Paper Scissors Game</h1>
+        <button id = "chooseRock" class="startButton">Rock</button>
+        <button id = "choosePaper" class="startButton">Paper</button>
+        <button id = "chooseScissors" class="startButton">Scissors</button>
+        <div class = "interface"></div>
+        <div id = "scoreBoard">
+            <h1>The current score is</h1>
+            <div id = "player">
+                <h1>YOU</h1>
+                <h1 id = "playerScore">0</h1>
+            </div>
+            <div id = "computer">
+                <h1>COMPUTER</h1>
+                <h1 id = "computerScore">0</h1>
+            </div>
+        </div>
+        <div id = "restartPage"></div>
     </body>
 </html>
