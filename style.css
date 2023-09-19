@@ -1,0 +1,89 @@
+* {
+    font-family: monospace, sans-serif;
+    background-color: rgb(133, 133, 133);
+    color: rgb(255, 255, 255);
+}
+
+body {
+    margin: 0;
+}
+
+#topBanner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(75, 75, 75);
+    margin: 0 auto;
+    padding: 50px;
+    font-size: 40px;
+}
+
+.buttonBody {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    padding: 50px 40px ;
+    background-color: rgb(133, 133, 133);
+}
+
+#currentScore {
+    text-align: center;
+    font-size: 60px;
+    margin: 10px;
+}
+
+#scoreBoard {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.interface {
+    height: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+button {
+    border: none;
+    background-color: rgb(75, 75, 75);
+    padding: 0;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    font-size: 30px;
+}
+
+#chooseRock {
+    background-image: url("./pictures/rock.png");
+    background-size:50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#choosePaper {
+    background-image: url("./pictures/paper.png");
+    background-size:50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#chooseScissors {
+    background-image: url("./pictures/scissors.png");
+    background-size:50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+img {
+    width: 180px;
+    height: 180px;
+    background-color: inherit;
+}
+
+#restartPage {
+    text-align: center;
+    font-size: 50px;
+    padding-bottom: 30px;
+}
+
