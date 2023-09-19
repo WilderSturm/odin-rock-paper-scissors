@@ -4,16 +4,25 @@
     <head>
         <meta charset = "UTF-8">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css">
         <script src = "code.js" defer></script>
     </head>
     <body>
-        <h1>The Rock Paper Scissors Game</h1>
-        <button id = "chooseRock" class="startButton">Rock</button>
-        <button id = "choosePaper" class="startButton">Paper</button>
-        <button id = "chooseScissors" class="startButton">Scissors</button>
+        <h1 id="topBanner">The Rock Paper Scissors Game</h1>
+        <div class = "buttonBody">
+            <button id = "chooseRock" class="startButton">
+                <!-- <img src="./pictures/rock.png"> -->
+            </button>
+            <button id = "choosePaper" class="startButton">
+                <!-- <img src="./pictures/paper.png"> -->
+            </button>
+            <button id = "chooseScissors" class="startButton">
+                <!-- <img src="./pictures/scissors.png"> -->
+            </button>
+        </div>
         <div class = "interface"></div>
+        <h1 id="currentScore">The current score</h1>
         <div id = "scoreBoard">
-            <h1>The current score is</h1>
             <div id = "player">
                 <h1>YOU</h1>
                 <h1 id = "playerScore">0</h1>

@@ -10,36 +10,50 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection,computerSelection) {
+    const gameResultText = document.createElement("div");
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection === "Rock") {
-            return;
+            gameResultText.textContent = "Both chose rock. It's a tie!";
+            ui.append(gameResultText);
         } else if (computerSelection === "Paper") {
             computerScore++;
-            console.log(computerScore);
+            gameResultText.textContent = "The computer chose paper. You lost!";
+            ui.append(gameResultText);
             computerScoreText.innerHTML = computerScore;
         } else {
             playerScore++;
             playerScoreText.innerHTML = playerScore;
-            return "You win! Rock beats Scissors.";
+            gameResultText.textContent = "The computer chose scissors. You won!";
+            ui.append(gameResultText);
         }
     } else if (playerSelection.toLowerCase() === "paper") {
         if (computerSelection === "Paper") {
-            return;
+            gameResultText.textContent = "Both chose paper. It's a tie!";
+            ui.append(gameResultText);
         } else if (computerSelection === "Scissors") {
             computerScore++;
+            gameResultText.textContent = "The computer chose scissors. You lost!";
+            ui.append(gameResultText);
             computerScoreText.innerHTML = computerScore;
         } else {
             playerScore++;
+            gameResultText.textContent = "The computer chose rock. You won!";
+            ui.append(gameResultText);
             playerScoreText.innerHTML = playerScore;
         }
     } else if (playerSelection.toLowerCase() === "scissors"){
         if (computerSelection === "Scissors") {
-            return;
+            gameResultText.textContent = "Both chose scissors. It's a tie!";
+            ui.append(gameResultText);
         } else if (computerSelection === "Rock") {
             computerScore++;
+            gameResultText.textContent = "The computer chose rock. You lost!";
+            ui.append(gameResultText);
             computerScoreText.innerHTML = computerScore;
         } else {
             playerScore++;
+            gameResultText.textContent = "The computer chose paper. You won!";
+            ui.append(gameResultText);
             playerScoreText.innerHTML = playerScore;
         }
     } 
@@ -47,6 +61,7 @@ function playRound(playerSelection,computerSelection) {
 
 function game(e) {
     let playerSelection = (e.target.id);
+    console.log(playerSelection)
     if (playerSelection === "chooseRock") {
         playerSelection = "rock";
     } else if (playerSelection === "choosePaper") {
@@ -56,9 +71,8 @@ function game(e) {
     }
     const computerSelection = getComputerChoice();
     const computerSelectionText = document.createElement("div");
-    computerSelectionText.textContent = `The computer chooses ${computerSelection}!`;
-    playRound(playerSelection,computerSelection);
     ui.innerHTML = "";
+    playRound(playerSelection,computerSelection);
     ui.append(computerSelectionText);
     gameEnd(playerScore,computerScore);
 
